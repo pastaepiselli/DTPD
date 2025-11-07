@@ -1,0 +1,19 @@
+[project]
+name = "DataTypes"
+version = "0.1.0"
+description = "Un pacchetto Python per gestire dati specializzati"
+authors = [
+  { name="Mario Rossi", email="mario.rossi@example.com" },
+  { name="Marco Pierleoni", email=""}
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/mariorossi/dati-speciali"
+Repository = "https://github.com/mariorossi/dati-speciali"
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"

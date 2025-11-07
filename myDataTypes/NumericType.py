@@ -9,17 +9,12 @@ class RealGEZ(float):
             return n
         raise ValueError(f"Il valore {n} è negativo!")
     
-    
-
-
 class IntGEZ(int):
     def __new__(cls, value:int|float|str|bool|Self):
         n:int = super().__new__(cls,value)
         if n >=0:
             return n 
         raise ValueError(f"Il valore {n} è negativo")
-    
-
 
 class IntGZ(int): 
     def __new__(cls, value:int|str|Self)->int|str: 
@@ -27,7 +22,17 @@ class IntGZ(int):
         if n>0:
             return n
         raise ValueError(f"Il valore {n} è negativo")
+    
 
+class IntGE1900(int):
+	# Tipo di dato specializzato Intero >= 1900
+	def __new__(cls, v: float|int|str|bool|Self) -> Self:
+		n: int = super().__new__(cls, v) # prova a convertire v in un int
+
+		if n >= 1900:
+			return n
+
+		raise ValueError(f"Il valore {n} è minore di 1900!")
 
 class Voto(int): 
     def __new__(cls, n:int|Self)->int|str:
@@ -37,8 +42,6 @@ class Voto(int):
             return voto
         
         raise ValueError(f"Il valore {n} del voto non è compreso nel range")
-
-
 
 class FloatDenaro(float): 
     valuta: Valuta

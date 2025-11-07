@@ -14,7 +14,6 @@ class CodiceFiscale(str):
         # Se il pattern è valido ritorna l'istanza come sottoclasse
         return super().__new__(cls, new_pattern)
 
-
 class PartitaIva(str):
     __pattern_2 = re.compile(r"\d{11}+")
     def __new__(cls, iva:str):
@@ -22,20 +21,11 @@ class PartitaIva(str):
             raise ValueError (f"Valore non valido: {iva}")
         return super().__new__(cls, iva)
 
-
 class CAP(str):
     def __new__(cls, cap:str) ->Self:
         if re.fullmatch(r'^\d{5}$', cap):
             return super().__new__(cls,cap)
         raise ValueError(f"La stringa '{cap}' non è un CAP italiano valido!")
-
-
-
-"""
-Gli oggetti denaro li volgio usare come float qualsiasi
-è il tipo di dato denaro basato sul float: essendo l'istanza di Denaro con la valuta eredita float e in più ha un campo valuta,
-e in più 
-"""
 
 class Email(str):
     __pattern_3 = re.compile(r"[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}")
@@ -44,8 +34,6 @@ class Email(str):
             raise ValueError (f"Valore non valido: {mail}")
         return super().__new__(cls, mail)
 
-
-
 class Telefono(str):
     __patern_4 = re.compile(r"\+[0-9]{10}")
     def __new__(cls, phone:str):
@@ -53,8 +41,6 @@ class Telefono(str):
             raise ValueError(f"Valore non valido: {phone}")
         return super().__new__(cls, phone)
     
-
-
 class CarPlate(str):
     __pattern_5 = re.compile(r"^(?:[A-Z]{2}\d{3}[A-Z]{2}|[A-Z]{1,2}\d{5,6}|[A-Z0-9]{1,3}[- ]?\d{1,4}[- ]?[A-Z0-9]{0,3})$")
     def __new__(cls, plate:str)->str:
@@ -69,6 +55,22 @@ class HashTag(str):
             raise ValueError(f"Invalid Value")
         return super().__new__(cls, hashTag)
 
+class CodiceVolo(str):
+	# Gli oggetti di questa classe *sono* stringhe
+	#  che rispettano il formato dei codici dei voli: XY1234
+	def __new__(cls, cv: str) -> Self:
+		cv: str = cv.upper().strip() # rendo la stringa maiuscola e senza spazi iniziali e finali
+		if re.fullmatch(r'^[A-Z0-9]{2}\d{4}$', cv):
+			return super().__new__(cls, cv)
+		
+		raise ValueError(f"La stringa '{cv}' non è un codice valido per un volo!")
+
+class CodiceIATA(str):
+	def __new__(cls, c: str) -> Self:
+		if re.fullmatch(r'^[A-Z]{3}$', c):
+			return super().__new__(cls, c)
+		
+		raise ValueError(f"La stringa '{c}' non è un codice IATA valido per un aeroporto!")
 
 
 
