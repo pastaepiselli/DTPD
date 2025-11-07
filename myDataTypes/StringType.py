@@ -39,34 +39,7 @@ class Valuta(str):
             return super().__new__(cls, v)
         raise ValueError(f"La stringa'{v}' non è un codice valido per una valuta!")
 
-class Denaro:
-    """
-    Rappresenta il tipo di dato concettuale composto
-    con i seguenti campi:
-        - importo: Reale
-        - valuta: Valuta
-    """  
-    _importo: float
-    _valuta: float
-    def __init__(self, imp: float, val:Valuta):
-        self._importo = imp
-        self._valuta = val
-        def importo(self) -> float:
-            return self._importo
-        def valuta(self)->Valuta:
-            return self._valuta
-        def __str__(self)-> str:
-            return f"{self.importo()} {self.valuta()}"
-        def __repr__(self) ->str:
-            return f"Denaro: {self.importo()} unità di valuta {self.valuta()}"
-        def __hash__(self)-> int:
-            return hash((self.importo(), self.valuta()))
-        def __eq__(self, other: Any) ->bool:
-            if not isinstance(other, type(self)) or \
-                hash(self) == hash(other):
-                return False
-            return self.importo() == other.importo() and \
-            self.valuta() == other.valuta()
+
 
 def  add(self,other: Self) ->Self:
     """
