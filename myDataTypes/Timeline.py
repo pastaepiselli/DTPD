@@ -1,9 +1,5 @@
-from datetime import date
-
-class IntDate(date):
-    def __new__(cls, year, month, day):
-        y:date = super().__new__(cls,year, month, day)
-        if y.year > 1900:
-            return y.year
-        raise ValueError(f"L'anno {y.year} è minore o uguale 1900")
-
+class IntGez1900(int):
+    def __new__(cls, year: int):
+        if year >= 1900:
+            return super().__new__(cls, year)
+        return ValueError("Inserire un anno maggiore di 1900")
