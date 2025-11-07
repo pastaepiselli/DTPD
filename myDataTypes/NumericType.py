@@ -49,7 +49,7 @@ class FloatDenaro(float):
     def importo(self)-> float:
         return self.real
     def valuta(self)->Valuta:
-        return self._valuta
+        return self.valuta
     def __str__(self):
         return f"{self.importo()} {self.valuta()}"
     def __repr__(self):

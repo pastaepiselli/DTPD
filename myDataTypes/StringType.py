@@ -31,29 +31,6 @@ class CAP(str):
 
 
 
-
-
-class Valuta(str):
-    def __new__(cls, v:str)->Self:
-        if re.fullmatch(r'^[A-Z]{3}$', v):
-            return super().__new__(cls, v)
-        raise ValueError(f"La stringa'{v}' non è un codice valido per una valuta!")
-
-
-
-def  add(self,other: Self) ->Self:
-    """
-    Somma self ad un'altra istanza di Denaro, ma solo se la valuta è la stessa.
-    Restituisce una nuova istanza di Denaro
-    """    
-    if self.valuta() !=other.valuta():
-        raise ValueError (f"Non posso sommare importi di valute diverse {self.valuta()} e {other.valuta()}")
-    somma:float = self.importo() + other.importo()
-    return Denaro(somma, self.valuta())
-
-def __sub__(self, other:Self)->Self:
-    return self + FloatDenaro(-other, other.valuta())
-
 """
 Gli oggetti denaro li volgio usare come float qualsiasi
 è il tipo di dato denaro basato sul float: essendo l'istanza di Denaro con la valuta eredita float e in più ha un campo valuta,
