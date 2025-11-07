@@ -85,7 +85,12 @@ class CarPlate(str):
             raise ValueError(f"Invalid value: {plate}")
         return super().__new__(cls, plate)
 
-
+class HashTag(str): 
+    __pattern_6 = re.compile(r"^#[A-Za-z0-9_]+$")
+    def __new__(cls, hashTag:str)->str: 
+        if not cls.__pattern_6.match(hashTag):
+            raise ValueError(f"Invalid Value")
+        return super().__new__(cls, hashTag)
 
 
 

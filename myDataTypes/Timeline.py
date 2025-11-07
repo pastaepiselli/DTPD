@@ -1,5 +1,11 @@
-class IntGez1900(int):
-    def __new__(cls, year: int):
-        if year >= 1900:
-            return super().__new__(cls, year)
-        return ValueError("Inserire un anno maggiore di 1900")
+
+
+
+from datetime import datetime, date
+
+
+
+class TimeRange(date): 
+    def __new__(cls, year, month, day):
+        return super().__new__(cls,year, month, day)
+

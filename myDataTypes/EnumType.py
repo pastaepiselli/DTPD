@@ -9,3 +9,7 @@ class StatoOrdine(StrEnum):
 class Genere(StrEnum):
     donna = auto()
     uomo = auto()
+    
+
+
+
