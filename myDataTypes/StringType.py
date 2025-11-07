@@ -78,9 +78,12 @@ class Telefono(str):
     
 
 
-class Targa(str):
-    # __pattern_5: re.compile(r"")
-    pass
+class CarPlate(str):
+    __pattern_5 = re.compile(r"^(?:[A-Z]{2}\d{3}[A-Z]{2}|[A-Z]{1,2}\d{5,6}|[A-Z0-9]{1,3}[- ]?\d{1,4}[- ]?[A-Z0-9]{0,3})$")
+    def __new__(cls, plate:str)->str:
+        if not cls.__pattern_5.match(plate): 
+            raise ValueError(f"Invalid value: {plate}")
+        return super().__new__(cls, plate)
 
 
 
