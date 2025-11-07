@@ -2,7 +2,7 @@ from typing import Self, Any
 from enum import *
 from datetime import date
 import re
-
+from NumericType import FloatDenaro
 class CodiceFiscale(str):
     __pattern = re.compile(r"^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$")
     def __new__(cls, new_pattern:str)->Self:
@@ -106,34 +106,11 @@ class Telefono(str):
 
 
 class Targa(str):
-    __pattern_5: re.compile(r"")
+    # __pattern_5: re.compile(r"")
+    pass
 
 
 
-class Indirizzo:
-    _via: str 
-    _civico: int 
-    __cap_pattern = re.compile(r"\d{5}")
-    def __init__(self, via: str, civico: int, cap: str) -> None:
-        if not self.__cap_pattern.match(cap):
-            raise ValueError (f"Il CAP fornito non è valido: {cap}")
-        self._via = via
-        self._civico = civico
-        self._cap = cap
-    def via(self) -> str:
-        return self._via
-    def civico(self) -> int:
-        return self._civico
-    def cap(self)-> str:
-        return self._cap
-    def __hash__(self) -> int:
-        return hash((self._via, self._civico))
-    def __eq__(self, other: Any) -> bool:
-        if other is None or \
-        not isinstance(other, type(self)) or \
-        hash(self) != hash(other):
-            return False
-        return self._via == other._via and self._civico == other._civico and self._cap == other._cap
 
 
 
