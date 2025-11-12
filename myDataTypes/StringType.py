@@ -1,8 +1,8 @@
 from typing import Self, Any
 from enum import *
-from datetime import date
+
 import re
-from NumericType import FloatDenaro
+
 class CodiceFiscale(str):
     __pattern = re.compile(r"^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}[A-Z]{1}[0-9]{3}[A-Z]{1}$")
     def __new__(cls, new_pattern:str)->Self:
@@ -26,6 +26,8 @@ class CAP(str):
         if re.fullmatch(r'^\d{5}$', cap):
             return super().__new__(cls,cap)
         raise ValueError(f"La stringa '{cap}' non è un CAP italiano valido!")
+
+
 
 class Email(str):
     __pattern_3 = re.compile(r"[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}")
@@ -54,6 +56,17 @@ class HashTag(str):
         if not cls.__pattern_6.match(hashTag):
             raise ValueError(f"Invalid Value")
         return super().__new__(cls, hashTag)
+
+
+class Provincia(str): 
+    __pattern_7 = re.compile(r"^[A-Z]{2}$")
+    
+    def __new__(cls, prov:str)->Self:
+        prov:str = prov.upper().strip()
+        if not cls.__pattern_7.match(prov):
+            raise ValueError("Invalid Value")
+        return super().__new__(cls, prov)
+
 
 class CodiceVolo(str):
 	# Gli oggetti di questa classe *sono* stringhe
